@@ -99,6 +99,18 @@
     <script src="libs/js/app/process-viewer.plugins.min.js"></script>
     <script src="libs/js/app/process-viewer.min.js"></script>
 
+    <script>
+        // Redireciona para o diagrama principal se estiver na página inicial
+        (function() {
+            var hash = window.location.hash;
+            if (!hash || hash === '#' || hash === '#list' || hash === '#list/') {
+                var firstPageId = Bizagi.AppModel.pages && Bizagi.AppModel.pages[0] && Bizagi.AppModel.pages[0].id;
+                if (firstPageId) {
+                    window.location.hash = '#diagram/' + firstPageId;
+                }
+            }
+        })();
+    </script>
 
 <!-- 
     @name:          Zoomer Template
